@@ -1,0 +1,42 @@
+
+public class T_3 extends Thread    {
+    int id = 1;
+    static String  theValue  = "1";
+    T_3(int id)       {
+        this.id = id;
+    }
+    public void run () {
+        if ( id == 1 )
+                theValue = "3";			// In this program also thevalue can be 3 get printed or 
+        else					//2 get printed first we are not sure
+                theValue = "2";
+    }      
+        
+    public static void main (String args []) {
+        new T_3(1).start();;
+        new T_3(2).start();;
+            
+        System.out.println("theValue = " + theValue );
+        System.out.println("theValue = " + theValue );
+    }       
+}       
+
+
+
+
+
+theValue = 3
+theValue = 2
+
+
+theValue = 3
+theValue = 2
+
+theValue = 2
+theValue = 2
+
+theValue = 2
+theValue = 2
+
+theValue = 2
+theValue = 3

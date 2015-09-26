@@ -1,0 +1,36 @@
+/*
+ * Output 
+ *	
+ */
+public class T_2 extends Thread	{
+	static int x = 1;
+	String info = "";
+
+	public T_2 (String info) {
+		this.info = info;
+		x++;
+	}
+
+	public void run () {
+		System.out.println(info + ": " + ++x);
+	}
+
+	public static void main (String args []) {
+		new T_2("a").start();		// Here also we can't predict the o/p because JVM can execute
+		new T_2("b").start();		//any thread which we are not sure, so for any line of execution
+	}					//JVM can execute thread a or b.
+}
+
+following are some o/p 
+
+a: 4
+b: 5
+
+a: 4
+b: 4				//the out could be combination of a and b
+				// with number between 3 and 5
+b: 4
+a: 4
+
+a: 4
+b: 5

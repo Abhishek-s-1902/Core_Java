@@ -1,0 +1,26 @@
+
+Explanation:
+
+
+
+public class T_1 extends Thread	{
+	static int x = 0;
+	String info = "";
+
+	public T_1 (String info) {
+		this.info = info;
+	}
+
+	public void run () {
+		x++;				/*Here may be X will do x++ first and after that
+	System.out.println(info + ": " + x);	//the y thread will get executed by JVM for x++, before printing
+		x++;				//"info + x" for x, so we can't predic the combination of output 	
+	}					//as well
+
+	public static void main (String args []) {
+		new T_1("x").start();		/*both the treads will started by JVM	
+		new T_1("y").start();		//and it will depends on JVM which one will run first
+	}					//also while running the one thread it could be 
+						//the case that the control get transfered 		
+}						//between these 2 threads and hence we can not 
+						//predict the output.	*/
